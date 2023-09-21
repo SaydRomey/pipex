@@ -23,7 +23,6 @@
 /* path.c */
 
 t_list	*get_path_lst(char **envp);
-char	*get_cmd_path(const char *cmd, t_list *path_lst);
 void	execute_cmd(char *arg, t_list *path_lst);
 
 /* pipex.c */
