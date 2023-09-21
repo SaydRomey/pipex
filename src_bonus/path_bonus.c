@@ -58,7 +58,7 @@ t_list	*get_path_lst(char **envp)
 	return (NULL);
 }
 
-char	*get_cmd_path(const char *cmd, t_list *path_lst)
+static char	*get_cmd_path(const char *cmd, t_list *path_lst)
 {
 	char	*possible_path;
 	char	*full_cmd_path;
