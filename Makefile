@@ -118,10 +118,10 @@ re: fclean all
 # ---------------------------------- BONUS ----------------------------------- #
 # **************************************************************************** #
 BNS_DIR		:= src_bonus
-# 
+
 B_SRCS		:=	$(addprefix $(BNS_DIR)/, $(addsuffix _bonus.c, $(SRC)))
 B_OBJS		:=	$(patsubst $(BNS_DIR)/%.c,$(OBJ_DIR)/%.o,$(B_SRCS))
-# 
+
 $(OBJ_DIR)/%_bonus.o: $(BNS_DIR)/%_bonus.c $(INCS) | $(OBJ_DIR)
 	@echo "$(CYAN)Compiling bonus...$(ORANGE)\t$(notdir $<)$(RESET)"
 	@$(COMPILE) $(C_FLAGS) $(HEADERS) -c $< -o $@
@@ -368,3 +368,27 @@ BG_GRAY		:= $(ESC)[100m
 # re: fclean all
 
 # .PHONY: all clean fclean re
+
+help:
+	@echo "\nUsage:"
+	@echo "  make [TARGET]\n"
+	@echo "Targets:"
+	@echo "  all        Compile and create the program"
+	@echo "  clean      Remove object files"
+	@echo "  fclean     Remove object files and executable"
+	@echo "  re         Re-compile (equivalent to running 'make fclean all')"
+	@echo "  bonus      Compile bonus part"
+	@echo "  rebonus    Re-compile bonus part"
+	@echo "  infile     Create sample input file for testing"
+	@echo "  run        Run the program using sample input file"
+	@echo "  shellrun   Run the shell command version of the program"
+	@echo "  bonusrun   Run the bonus version of the program"
+	@echo "  shellbonus Run the shell command version of the bonus program"
+	@echo "  norm       Check for norminette errors"
+	@echo "  nm         Show functions in the binary"
+	@echo "  pdf        Open the project PDF in a web browser"
+	@echo "  backup     Create a backup zip of the current directory"
+	@echo "  leaks      Run the program with valgrind to check for leaks"
+	@echo "  supp       Generate a suppression file for valgrind"
+	@echo "  suppleaks  Run the program with valgrind using the suppression file"
+	@echo "  lclean     Remove suppression and valgrind log files\n"
