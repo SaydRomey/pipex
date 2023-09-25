@@ -27,18 +27,13 @@ int	open_flag(char *file, char *o_flag)
 	return (fd);
 }
 
-void	validate_files(char *infile, char *outfile)
+int	validate_files(char *infile, char *outfile)
 {
 	int	fd_in;
 	int	fd_out;
+	int	valid_infile;
 
-	fd_in = open(infile, READ);
-	if (fd_in == ERROR)
-	{
-		ft_fprintf(FD_ERROR, "Pipex: %s: %s\n", strerror(errno), infile);
-		exit(FAILURE);
-	}
-	close(fd_in);
+	valid_infile = TRUE;
 	fd_out = open(outfile, CREATE | READ_WRITE | TRUNCATE, 0644);
 	if (fd_out == ERROR)
 	{
@@ -46,4 +41,14 @@ void	validate_files(char *infile, char *outfile)
 		exit(FAILURE);
 	}
 	close(fd_out);
+	fd_in = open(infile, READ);
+	if (fd_in == ERROR)
+	{
+		ft_fprintf(FD_ERROR, "Pipex: %s: %s\n", strerror(errno), infile);
+		valid_infile = FALSE;
+	}
+	else
+		close(fd_in);
+	return (valid_infile);
 }
+
