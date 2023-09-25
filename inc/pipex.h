@@ -34,6 +34,6 @@ void	pipex(int argc, char **argv, t_list *path_lst, int valid_infile);
 /* utils.c */
 
 int		open_flag(char *file, char *flag);
-void	validate_files(char *infile, char *outfile);
+int		validate_files(char *infile, char *outfile);
 
 #endif
