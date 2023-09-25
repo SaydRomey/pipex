@@ -63,6 +63,8 @@ static char	*get_cmd_path(const char *cmd, t_list *path_lst)
 	char	*possible_path;
 	char	*full_cmd_path;
 
+	if (access(cmd, F_OK) == 0)
+		return ((char *)cmd);
 	while (path_lst)
 	{
 		possible_path = ft_strjoin(path_lst->content, "/");
