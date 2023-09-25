@@ -20,6 +20,8 @@
 # define USAGE		"Usage: ./pipex file1 cmd1 cmd2 file2\n"
 # define USAGE_B	"Usage: ./pipex file1 cmd1 cmd2 ... cmdn file2\n"
 
+# define VOID		"/dev/null"
+
 /* path.c */
 
 t_list	*get_path_lst(char **envp);
@@ -27,7 +29,7 @@ void	execute_cmd(char *arg, t_list *path_lst);
 
 /* pipex.c */
 
-void	pipex(int argc, char **argv, t_list *path_lst);
+void	pipex(int argc, char **argv, t_list *path_lst, int valid_infile);
 
 /* utils.c */
 
