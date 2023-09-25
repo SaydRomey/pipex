@@ -17,7 +17,7 @@ NAME		:= pipex
 
 INFILE		:= in.txt
 CMD1		:= grep line
-CMDBONUS	:= cat " "grep is
+CMDBONUS	:= grep is
 CMD2		:= wc -l
 OUTFILE		:= out.txt
 
