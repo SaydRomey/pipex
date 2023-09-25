@@ -59,15 +59,18 @@ static void	fork_and_execute(char *arg, t_list *path_lst, int fd_in, int fd_out)
 		parent_process(fd, pid);
 }
 
-void	pipex(int argc, char **argv, t_list *path_lst)
+void	pipex(int argc, char **argv, t_list *path_lst, int valid_infile)
 {
 	int	i;
 	int	fd_in;
 	int	fd_out;
 
 	i = 2;
-	fd_in = open_flag(argv[1], "infile");
 	fd_out = open_flag(argv[argc - 1], "outfile");
+	if (valid_infile == TRUE)
+		fd_in = open_flag(argv[1], "infile");
+	else
+		fd_in = open(VOID, READ);
 	dup2(fd_in, FD_INPUT);
 	close(fd_in);
 	while (i < argc - 2)
